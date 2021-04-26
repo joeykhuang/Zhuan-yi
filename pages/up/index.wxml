@@ -1,0 +1,85 @@
+<view class="container">
+    <view class='edit-container'>
+        <view class="a-item">
+            <view class="icon">
+                <image class="img" src="/images/icon/receiver.png"></image>
+            </view>
+            <view class="input-wrap">
+                <input cursor-spacing='100' class='a-input' bindinput="bindinputName" placeholder='商品名字' value="{{address.goodsname}}"></input>
+            </view>
+        </view>
+        <view class="a-item">
+            <view class="icon">
+                <image class="img" src="/images/icon/position.png"></image>
+            </view>
+            <view class="input-wrap" bindtap="chooseRegion">
+                <input cursor-spacing='100' class="a-input" value="{{address.full_region}}" disabled="true" placeholder="选择商品种类" />
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="a-item">
+            <view class="icon">
+                <image class="img" src="/images/icon/address.png"></image>
+            </view>
+            <view class="input-wrap">
+                <input cursor-spacing='100' class="a-input" bindinput="bindinputAddress" value="{{address.details}}" placeholder="商品介绍" />
+            </view>
+        </view>
+        <view class="a-item">
+            <view class="icon">
+                <image class="img" src="/images/icon/address.png"></image>
+            </view>
+            <view class="input-wrap">
+                <input cursor-spacing='100' class='a-input' bindinput="bindinputtime" placeholder='预计租赁时间/月 (如果出售请填 0)' value="{{address.time}}"></input>
+            </view>
+        </view>
+    <view class="view_contain">
+
+<!-- 上传多张图片 -->
+</view>
+
+        <!-- <view class="a-item">
+            <view class="default-input {{address.is_default == 1 ? 'checked' : 'unchecked'}}" bindtap="bindIsDefault" >点击设为默认地址</view>
+        </view> -->
+    </view>
+    <!--
+    <view class="default-wrap">
+        <view class="text">设为默认地址</view>
+        <switch class="switch" checked="{{address.is_default}}" bindchange="switchChange"></switch>
+    </view>
+<text>上传多张图片</text>--->
+<view class="ui_uploader_cell">
+        <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+            <icon class='ui_uploader_item_icon' bindtap='clearImg_d' data-index="{{index}}" type="clear" size="20" color="red" />
+            <image bindtap='showImg_d' data-index="{{index}}" src='{{item}}'></image>
+        </view>
+        <view class='ui_uploader' bindtap='choosePic_d' wx:if="{{showUpload}}" style="width: 180rpx; height: 240rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></view>
+    </view>
+    <!--
+    <button>上传</button>
+    -->
+    
+    <view class='btn-wrap' bindtap="saveAddress">
+        <view class="btn active">保存</view>
+    </view>
+
+    <!--
+    <view class='delete-wrap' wx:if="{{addressId > 0}}" bindtap='deleteAddress'>
+        <view class='btn'>删除</view>
+    </view>
+-->
+    <view class="region-select" wx:if="{{openSelectRegion}}">
+        <view class="hd">
+            <view class="region-selected">
+                <view class="item {{item.id == 0 ? 'disabled' : ''}} {{(regionType -1) === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="id">{{item.name}}</view>
+            </view>
+            <view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
+        </view>
+        <view class="bd">
+            <scroll-view scroll-y class="region-list">
+                <view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="id">{{item.name}}</view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<view class="bg-mask" bindtap="cancelSelectRegion" wx:if="{{openSelectRegion}}"></view>

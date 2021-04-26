@@ -1,0 +1,11 @@
+<view class="container">
+    <view class='about-wrap'>
+        <view class='title'>OurClothesRecycle</view>
+        <view class='content'>
+        </view>
+        <view class="line"></view>
+        <view class="content">开发者：黄彦清</view>
+        <view class="content">微信：joeykhuang</view>
+        <view class="line"></view>
+    </view>
+</view>
